@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Providers from './providers/Providers';
 import App from './App';
 import { editHeaderQuery } from './../utils/documentQueries';
 
@@ -25,9 +24,7 @@ async function addC4ExpansionButton(){ // キャラクター編集メニュー�
                     characterEditTitle.after(container)
                     ReactDOM.render(
                         <React.StrictMode>
-                            <Providers>
-                                <App/>
-                            </Providers>
+                            <App/>
                         </React.StrictMode>,
                         container
                     );

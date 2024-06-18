@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Button from '@mui/material/Button';
 import { getCharacterData } from '../utils/getCharacterData';
+import { exportToClipboard } from '../utils/modules';
 
 const theme = createTheme({
     palette: {
@@ -16,9 +17,11 @@ export default function App() {
         <ThemeProvider theme={theme}>
             <Button
                 onClick={() => {
-                    window.alert("キャラクターコマをコピーしました。");
+                    // キャラクターデータを取得し、クリップボードにコピーする
                     const characterData = getCharacterData();
-                    console.log(characterData);
+                    const characterDataStr: string = JSON.stringify(characterData);
+                    exportToClipboard(characterDataStr);
+                    window.alert("キャラクターコマをコピーしました。");
                 }}
             >
                 キャラコマ出力
