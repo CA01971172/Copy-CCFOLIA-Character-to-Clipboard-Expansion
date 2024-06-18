@@ -1,4 +1,5 @@
-import { nameQuery, initiativeQuery, externalUrlQuery, iconUrlQuery, commandsQuery, memoQuery, /* xQuery, yQuery,  */sizeQuery, secretQuery, facesQuery, statusQuery, paramsQuery } from "./documentQueries";
+import { nameQuery, initiativeQuery, externalUrlQuery, iconUrlQuery, commandsQuery, memoQuery, /* xQuery, yQuery,  */sizeQuery, secretQuery, facesQuery, statusQuery, paramsQuery, colorIconQuery } from "./documentQueries";
+import { changeName } from "./modules";
 import { CharacterInfo, FaceInfo, ParamInfo, StatusInfo } from "./types";
 
 // キャラクター編集メニューの入力内容を取得し、キャラクターコマのJSON形式データを返す関数
@@ -88,6 +89,12 @@ export function getCharacterData(): CharacterInfo{
         }
     }
 
+    // キャラクターカラーを取得する
+    // 自分のキャラコマのみ取得可能
+    changeName(name); // 現在選択中のキャラクター名を、キャラクター編集メニューを開いているキャラクター名に変更する
+    const colorSvgElement: HTMLElement | null = (document.querySelector(colorIconQuery) as HTMLElement | null); // カラーパレットの要素
+    const color: string = colorSvgElement?.style.color || "#888888"; // キャラクターカラー
+
     const result: CharacterInfo = {
         kind: "character",
         data: {
@@ -99,7 +106,7 @@ export function getCharacterData(): CharacterInfo{
             commands, // チャットパレット
             status, // ステータス
             params, // パラメータ
-            color: "#888888", // キャラのカラー
+            color, // キャラのカラー
             memo, // キャラクターメモ
             x, // 盤面上のx座標
             y, // 盤面上のy座標
