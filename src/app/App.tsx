@@ -1,9 +1,25 @@
-import { useState } from 'react'
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Button from '@mui/material/Button';
 
-export default function App(){
+const theme = createTheme({
+    palette: {
+        primary: {
+            main: "#fff" // プライマリーカラーを白色に設定
+        }
+    }
+});
+
+// キャラクター編集メニューの入力内容をjson形式に変換したものを取得するボタン
+export default function ConvertButton() {
     return (
-        <>
-            <div>hoge</div>
-        </>
-    )
+        <ThemeProvider theme={theme}>
+            <Button
+                onClick={() => {
+                    window.alert("キャラクターコマをコピーしました。");
+                }}
+            >
+                キャラコマ出力
+            </Button>
+        </ThemeProvider>
+    );
 }
