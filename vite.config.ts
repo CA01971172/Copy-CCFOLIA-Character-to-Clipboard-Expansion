@@ -17,8 +17,9 @@ const manifest = defineManifest({
     },
     content_scripts: [
         {
-            matches: ["https://iachara.com/*"],
-            js: ["src/app/main.tsx"]
+            matches: ["https://ccfolia.com/rooms/*"],
+            js: ["src/app/main.tsx"],
+            run_at: "document_idle"
         },
     ],
 });
