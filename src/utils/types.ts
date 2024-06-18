@@ -1,11 +1,11 @@
 // キャラコマのデータ
-type Character = {
+export type CharacterInfo = {
     kind: string; // コマの種類？
     data: CharacterDataInfo; // キャラクターデータ
 };
 
 // キャラクターデータ
-type CharacterDataInfo = {
+export type CharacterDataInfo = {
     name: string; // キャラ名
     initiative: number; // イニシアチブ
     externalUrl: string; // 参照URL
@@ -31,20 +31,20 @@ type CharacterDataInfo = {
 };
 
 // 表情差分データ
-type FaceInfo = {
+export type FaceInfo = {
     label: string; // 表情差分名
     iconUrl: string; // 表情差分アイコンのURL
 };
 
 // ステータスデータ
-type StatusInfo = {
+export type StatusInfo = {
     label: string; // ステータス名
     value: number; // ステータスの現在値
     max: number; // ステータスの最大値
 };
 
 // パラメータデータ
-type ParamInfo = {
+export type ParamInfo = {
     label: string; // パラメータ名
     value: string; // パラメータの値
 };
